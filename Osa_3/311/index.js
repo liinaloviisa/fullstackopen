@@ -73,11 +73,11 @@ app.get('/api/persons/:id', (request, response) => {
   }
 })
 
-const path = require('path');
+//const path = require('path');
 
-app.get('/*', (request, response) => {
-  response.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
+//app.get('/*', (request, response) => {
+//  response.sendFile(path.join(__dirname, 'dist', 'index.html'));
+//});
 
 app.delete('/api/persons/:id', (request, response) => {
   const id = request.params.id
