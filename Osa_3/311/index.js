@@ -73,9 +73,11 @@ app.get('/api/persons/:id', (request, response) => {
   }
 })
 
-app.get('/*', (req, res) => {
-  res.sendFile('index.html', { root: 'dist' })
-})
+const path = require('path');
+
+app.get('/*', (request, response) => {
+  response.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 app.delete('/api/persons/:id', (request, response) => {
   const id = request.params.id
