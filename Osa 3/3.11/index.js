@@ -7,6 +7,10 @@ app.use(express.json())
 app.use(cors())
 app.use(express.static('dist'))
 
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root: 'dist' })
+})
+
 morgan.token('puhnumero', (request, response) => { 
   if (request.method === 'POST') {
     return JSON.stringify(request.body);
