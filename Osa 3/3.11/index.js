@@ -7,9 +7,7 @@ app.use(express.json())
 app.use(cors())
 app.use(express.static('dist'))
 
-app.get('*', (req, res) => {
-  res.sendFile('index.html', { root: 'dist' })
-})
+
 
 morgan.token('puhnumero', (request, response) => { 
   if (request.method === 'POST') {
@@ -73,6 +71,10 @@ app.get('/api/persons/:id', (request, response) => {
   } else {
     response.status(404).end()
   }
+})
+
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root: 'dist' })
 })
 
 app.delete('/api/persons/:id', (request, response) => {
