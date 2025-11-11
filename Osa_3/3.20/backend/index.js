@@ -10,6 +10,7 @@ app.use(express.json())
 //app.use(requestLogger)
 app.use(cors())
 
+console.log("MONGODB_URI:", process.env.MONGODB_URI);
 
 morgan.token('phoneNumber', (request, response) => { 
   if (request.method === 'POST') {
