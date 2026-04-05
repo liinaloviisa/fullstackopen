@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogilistat
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImhhbnNraSIsImlkIjoiNjkyMWE1ZTQ2ZjU5MDQ5YmRmYjk4ODAwIiwiaWF0IjoxNzY0MDg1Njc5fQ.EebfLtZk97iQy4qBQcuL7mFUTG4XMbrH91DuqpoI9ZE
+
+{
+    "title": "Test blog",
+    "author": "testing",
+    "url": "https://testing.com",
+    "likes": 3689
+}

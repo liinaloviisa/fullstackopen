@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogilistat
+Content-Type: application/json
+
+{
+    "title": "New Blog from hanski",
+    "author": "hanski",
+    "url": "https://lifeisgood.com",
+    "likes": 8000000,
+    "userId": "6921a5e46f59049bdfb98800"
+}
