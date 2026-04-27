@@ -1,7 +1,0 @@
-POST https://fullstackopen-5prj.onrender.com/api/persons
-Content-Type: application/json
-
-{
-    "name": "Leenu Ankka",
-    "number": "123445"
-}
