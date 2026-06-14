@@ -11,7 +11,12 @@ const App = () => {
   ]) 
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
-  const [showAll, setShowAll] = useState(true)
+  /*const [showAll, setShowAll] = useState(true)*/
+  const [filter, setFilter] = useState('')
+
+  const handleFilterChange = (event) => {
+    setFilter(event.target.value)
+  }
 
   const addNameAndNumber = (event) => {
     event.preventDefault()
@@ -24,7 +29,6 @@ const App = () => {
     var nameNotExist= true
 
     persons.forEach((person) => {
-    debugger
       if (person.name === newName) {
         alert(`${newName} is already added to phonebook`)
         nameNotExist = false
@@ -33,7 +37,8 @@ const App = () => {
 
     if (nameNotExist) {
       setPersons(persons.concat(nameObject))
-      setNewName(newName)
+      setNewName('')
+      setNewNumber('')
     }
   }
 
@@ -47,26 +52,20 @@ const App = () => {
     setNewNumber(event.target.value)
   }
 
-  const namesToShow = showAll
-    ? persons
-    : persons.filter(person => person.name === newName)
-
-  const listPersons = () => {
-    return persons.map(person => (
-      <div key={person.name}>{person.name} {person.number}</div>
-    ));
-  }
-
-  const personsListed = listPersons()
+  const namesToShow = persons.filter(person => 
+    person.name.toLowerCase().includes(filter.toLowerCase()))
 
   return (
     <div>
       <h2>Phonebook</h2>
       <div>
         filter shown with
-        <input
-        onChange={namesToShow}>
-        </input></div>
+        <input 
+          value={filter} 
+          onChange={handleFilterChange}
+        />
+        </div>
+      <h3>add a new</h3>
       <form onSubmit={addNameAndNumber}>
         <div>
           name:
@@ -84,9 +83,13 @@ const App = () => {
         </div>
       </form>
       <h2>Numbers</h2>
-      <div>{personsListed}</div>
-      <div>debug: {newName}</div>
-      ...
+      <div>  
+        {namesToShow.map(person => (
+          <div key={person.name}>
+            {person.name} {person.number}
+          </div>
+        ))}
+      </div>
     </div>
   )
 
